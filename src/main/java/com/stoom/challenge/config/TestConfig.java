@@ -21,7 +21,7 @@ public class TestConfig implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		Address a1 = new Address(null, "Leonor de Castro", "64", "casa 4", "curuça", "Sao Paulo", "Sao Paulo", "Brasil", "08031510", "5551566", "151515");
-		Address a2 = new Address(null, "Leonor de Castro", "64", "casa 4", "curuça", "Sao Paulo", "Sao Paulo", "Brasil", "08031510", "5551566", "151515");
+		Address a2 = new Address(null, "Benedito Neto", "56", "N/A", "Belém", "Sao Paulo", "Sao Paulo", "Brasil", "0806897452", "151515", "5551566");
 		
 		addressRepository.saveAll(Arrays.asList(a1,a2));
 	}
