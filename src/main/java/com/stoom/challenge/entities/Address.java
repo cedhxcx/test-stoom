@@ -14,6 +14,7 @@ public class Address implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String streetName;
 	private String number;
 	private String complement;
