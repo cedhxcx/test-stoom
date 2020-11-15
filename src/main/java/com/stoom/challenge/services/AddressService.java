@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.stoom.challenge.entities.Address;
 import com.stoom.challenge.repositories.AddressRepository;
+import com.stoom.challenge.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class AddressService {
@@ -21,7 +22,7 @@ public class AddressService {
 
 	public Address findById(Long id) {
 		Optional<Address> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 
 	public Address insert(Address obj) {
