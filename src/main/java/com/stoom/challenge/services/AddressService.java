@@ -1,7 +1,9 @@
 package com.stoom.challenge.services;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.stoom.challenge.dto.AddressDTO;
 import com.stoom.challenge.entities.Address;
+import com.stoom.challenge.mapper.AddressMapper;
 import com.stoom.challenge.repositories.AddressRepository;
 import com.stoom.challenge.services.exception.ResourceNotFoundException;
 
@@ -20,8 +23,12 @@ public class AddressService {
 	@Autowired
 	private AddressRepository repository;
 
-	public List<Address> findAll() {
-		return repository.findAll();
+	public List<AddressDTO> findAll() {		
+		List<Address> addresses = repository.findAll();
+		if(!addresses.isEmpty()) {
+			return addresses.stream().map(address -> AddressMapper.map(address)).collect(Collectors.toList());
+		}
+		return Collections.emptyList();
 	}
 
 	public Address findById(Long id) {

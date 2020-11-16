@@ -2,7 +2,6 @@ package com.stoom.challenge.resources;
 
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,33 +28,32 @@ public class AddressResources {
 
 	@GetMapping
 	public ResponseEntity<List<AddressDTO>> findAll() {
-		List<Address> list = service.findAll();
-		List<AddressDTO> listDto = list.stream().map(x -> new AddressDTO(x)).collect(Collectors.toList());
-		return ResponseEntity.ok().body(listDto);
+		List<AddressDTO> list = service.findAll();
+		return ResponseEntity.ok().body(list);
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<AddressDTO> findById(@PathVariable Long id){
+	public ResponseEntity<AddressDTO> findById(@PathVariable Long id) {
 		Address obj = service.findById(id);
 		return ResponseEntity.ok().body(new AddressDTO(obj));
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody AddressDTO objDto){
+	public ResponseEntity<Void> insert(@RequestBody AddressDTO objDto) {
 		Address obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
-		service.delete(id); 
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
+		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody AddressDTO objDto, @PathVariable Long id){
+	public ResponseEntity<Void> update(@RequestBody AddressDTO objDto, @PathVariable Long id) {
 		Address obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);

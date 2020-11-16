@@ -1,6 +1,6 @@
-package com.stoom.teste;
+package com.stoom.challenge;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -9,5 +9,5 @@ class ChallengeApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-	
+
 }
