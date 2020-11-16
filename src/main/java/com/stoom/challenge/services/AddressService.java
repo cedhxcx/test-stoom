@@ -86,7 +86,7 @@ public class AddressService {
 		entity.setCity(obj.getCity());
 		entity.setState(obj.getState());
 		entity.setCountry(obj.getCountry());
-		entity.setZipCode(obj.getZipCode());
+		entity.setZipcode(obj.getZipcode());
 		entity.setLatitude(obj.getLatitude());
 		entity.setLongitude(obj.getLongitude());
 

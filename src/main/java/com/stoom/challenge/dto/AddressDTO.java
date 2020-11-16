@@ -18,19 +18,19 @@ public class AddressDTO implements Serializable {
 	private String number;
 	private String complement;
 
-	@NotNull(message = "neighbourhood name cannot be empty")
+	@NotNull(message = "neighbourhood cannot be empty")
 	private String neighbourhood;
 
-	@NotNull(message = "city name cannot be empty")
+	@NotNull(message = "city  cannot be empty")
 	private String city;
 
-	@NotNull(message = "state name cannot be empty")
+	@NotNull(message = "state  cannot be empty")
 	private String state;
 
-	@NotNull(message = "country name cannot be empty")
+	@NotNull(message = "country  cannot be empty")
 	private String country;
 
-	@NotNull(message = "zipcode name cannot be empty")
+	@NotNull(message = "zipcode cannot be empty")
 	private String zipcode;
 
 	private String latitude;
@@ -48,7 +48,7 @@ public class AddressDTO implements Serializable {
 		city = obj.getCity();
 		state = obj.getState();
 		country = obj.getCountry();
-		zipcode = obj.getZipCode();
+		zipcode = obj.getZipcode();
 		latitude = obj.getLatitude();
 		longitude = obj.getLongitude();
 	}
