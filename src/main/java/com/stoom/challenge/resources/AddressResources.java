@@ -35,16 +35,17 @@ public class AddressResources {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Address> findById(@PathVariable Long id){
+	public ResponseEntity<AddressDTO> findById(@PathVariable Long id){
 		Address obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().body(new AddressDTO(obj));
 	}
 
 	@PostMapping
-	public ResponseEntity<Address> insert(@RequestBody Address obj){
+	public ResponseEntity<Void> insert(@RequestBody AddressDTO objDto){
+		Address obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).body(obj);
+		return ResponseEntity.created(uri).build();
 	}
 	
 	@DeleteMapping(value = "/{id}")
@@ -54,8 +55,10 @@ public class AddressResources {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Address> update(@PathVariable Long id, @RequestBody Address obj){
-		obj = service.update(id, obj);
-		return ResponseEntity.ok().body(obj);
+	public ResponseEntity<Void> update(@RequestBody AddressDTO objDto, @PathVariable Long id){
+		Address obj = service.fromDTO(objDto);
+		obj.setId(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
 	}
 }

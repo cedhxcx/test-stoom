@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.stoom.challenge.dto.AddressDTO;
 import com.stoom.challenge.entities.Address;
 import com.stoom.challenge.repositories.AddressRepository;
 import com.stoom.challenge.services.exception.ResourceNotFoundException;
@@ -30,23 +31,30 @@ public class AddressService {
 
 	public Address insert(Address obj) {
 		return repository.save(obj);
+
+	}
+
+	public Address fromDTO(AddressDTO objDto) {
+		return new Address(objDto.getId(), objDto.getStreetName(), objDto.getNumber(), objDto.getComplement(),
+				objDto.getNeighbourhood(), objDto.getCity(), objDto.getState(), objDto.getCountry(),
+				objDto.getZipcode(), objDto.getLatitude(), objDto.getLongitude());
 	}
 
 	public void delete(Long id) {
 		try {
-		repository.deleteById(id);
+			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException(id);
 		}
 	}
 
-	public Address update(Long id, Address obj) {
+	public Address update(Address obj) {
 		try {
-		Address entity = repository.getOne(id);
-		updateData(entity, obj);
-		return repository.save(entity);
+			Address entity = repository.getOne(obj.getId());
+			updateData(entity, obj);
+			return repository.save(entity);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException(id);
+			throw new ResourceNotFoundException(obj.getId());
 		}
 	}
 
