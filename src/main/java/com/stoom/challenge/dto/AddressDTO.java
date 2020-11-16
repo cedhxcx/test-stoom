@@ -2,20 +2,37 @@ package com.stoom.challenge.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 import com.stoom.challenge.entities.Address;
 
 public class AddressDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
+
+	@NotNull(message = "street name cannot be empty")
 	private String streetName;
+
+	@NotNull(message = "number cannot be empty")
 	private String number;
 	private String complement;
+
+	@NotNull(message = "neighbourhood name cannot be empty")
 	private String neighbourhood;
+
+	@NotNull(message = "city name cannot be empty")
 	private String city;
+
+	@NotNull(message = "state name cannot be empty")
 	private String state;
+
+	@NotNull(message = "country name cannot be empty")
 	private String country;
+
+	@NotNull(message = "zipcode name cannot be empty")
 	private String zipcode;
+
 	private String latitude;
 	private String longitude;
 

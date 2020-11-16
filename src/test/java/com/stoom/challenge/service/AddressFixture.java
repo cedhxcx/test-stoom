@@ -7,7 +7,7 @@ public class AddressFixture {
 	public static Address getInstance() {
 		Address address = new Address();
 		address.setId(1L);
-		address.setStreetName("rua augusta");
+		address.setStreetName("rua teste unitario");
 		address.setNumber("66");
 		address.setComplement("casa 3");
 		address.setNeighbourhood("brigadeiro");

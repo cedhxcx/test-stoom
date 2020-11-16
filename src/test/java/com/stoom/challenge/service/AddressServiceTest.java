@@ -1,8 +1,8 @@
 package com.stoom.challenge.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 import java.util.Collections;
@@ -47,11 +47,19 @@ public class AddressServiceTest {
 		});
 
 	}
+	
+	@Test
+	public void shouldDeleteByIdSuccessfully() {
+		Long id = 1L;
+		service.delete(id);
+		assertThat(repository.findById(id)).isNotPresent();		
+	}
+	
+
 
 	@Test(expected = ResourceNotFoundException.class)
 	public void shouldReceiveExcepetionWhenDeleteIdNotFound() {
 		when(repository.getOne(anyLong())).thenThrow(EntityNotFoundException.class);
-		//doThrow(new Exception()).when(repository.getOne(anyLong()));
 		service.update(AddressFixture.getInstance());
 	}
 
