@@ -30,7 +30,7 @@ public class AddressService {
 	private AddressRepository repository;
 
 	public List<AddressDTO> findAll() {
-		logger.info("Initializing list AddressDTO method");
+		logger.info("Initializing list Address method");
 		List<Address> addresses = repository.findAll();
 		if(!addresses.isEmpty()) {
 			return addresses.stream().map(address -> AddressMapper.map(address)).collect(Collectors.toList());
@@ -42,11 +42,12 @@ public class AddressService {
 		Optional<Address> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
+	
 
 	public Address insert(Address obj) {
+		logger.info(" Initializing insert Address method. zipcode: ", obj.getZipcode());
 		return repository.save(obj);
-		
-	}
+}
 
 	public Address fromDTO(AddressDTO objDto) {
 		return new Address(objDto.getId(), objDto.getStreetName(), objDto.getNumber(), objDto.getComplement(),
