@@ -48,7 +48,7 @@ public class AddressDTO implements Serializable {
 		city = obj.getCity();
 		state = obj.getState();
 		country = obj.getCountry();
-		zipcode = obj.getZipcode();
+		zipcode = obj.getZipCode();
 		latitude = obj.getLatitude();
 		longitude = obj.getLongitude();
 	}

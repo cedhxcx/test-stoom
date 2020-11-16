@@ -15,7 +15,7 @@ public class AddressMapper {
 		addresDto.setCity(address.getCity());
 		addresDto.setState(address.getState());
 		addresDto.setCountry(address.getCountry());
-		addresDto.setZipcode(address.getZipcode());
+		addresDto.setZipcode(address.getZipCode());
 		addresDto.setLatitude(address.getLatitude());
 		addresDto.setLongitude(address.getLongitude());
 		

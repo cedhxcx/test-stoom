@@ -23,7 +23,7 @@ public class Address implements Serializable{
 	private String city;
 	private String state;
 	private String country;
-	private String zipcode;
+	private String zipCode;
 	private String latitude;
 	private String longitude;
 	
@@ -31,7 +31,7 @@ public class Address implements Serializable{
 	}
 
 	public Address(Long id, String streetName, String number, String complement, String neighbourhood, String city,
-			String state, String country, String zipcode, String latitude, String longitude) {
+			String state, String country, String zipCode, String latitude, String longitude) {
 		super();
 		this.id = id;
 		this.streetName = streetName;
@@ -41,7 +41,7 @@ public class Address implements Serializable{
 		this.city = city;
 		this.state = state;
 		this.country = country;
-		this.zipcode = zipcode;
+		this.zipCode = zipCode;
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
@@ -110,12 +110,12 @@ public class Address implements Serializable{
 		this.country = country;
 	}
 
-	public String getZipcode() {
-		return zipcode;
+	public String getZipCode() {
+		return zipCode;
 	}
 
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 
 	public String getLatitude() {

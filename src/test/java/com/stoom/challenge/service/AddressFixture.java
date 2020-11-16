@@ -14,7 +14,7 @@ public class AddressFixture {
 		address.setCity("Sao Paulo");
 		address.setState("São Paulo");
 		address.setCountry("Brasil");
-		address.setZipcode("08321548");
+		address.setZipCode("08321548");
 		address.setLatitude("123456789");
 		address.setLongitude("-987654321");
 		return address;
